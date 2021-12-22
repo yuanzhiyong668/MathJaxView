@@ -238,10 +238,6 @@ public class MathJaxView extends FrameLayout implements View.OnTouchListener {
         if (intercept) {
             getParent().requestDisallowInterceptTouchEvent(true);
         }
-        abc5201314
-                Abc5201314
-                ABC5201314
-
         return super.dispatchTouchEvent(ev);
     }
 
