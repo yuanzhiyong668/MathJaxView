@@ -28,6 +28,7 @@ import java.util.regex.Pattern;
 public class MathJaxView extends FrameLayout implements View.OnTouchListener {
     private String inputText = null;
     private String inputTestColor = "#000000";
+    private int inputTextSize = 15;
     private WebView mWebView;
     private Handler handler = new Handler();
 
@@ -162,6 +163,18 @@ public class MathJaxView extends FrameLayout implements View.OnTouchListener {
         loadColor();
     }
 
+    public void setInputTextSize(int textSize) {
+        if (textSize <= 0) {
+            return;
+        }
+        this.inputTextSize = textSize;
+        loadText();
+    }
+
+    public int getInputTextSize() {
+        return inputTextSize;
+    }
+
     public void loadText() {
         String laTexString;
         laTexString = inputText;
@@ -216,7 +229,7 @@ public class MathJaxView extends FrameLayout implements View.OnTouchListener {
                 "\n" +
                 "\n" +
                 "\n" +
-                "<div id='math' style=\"text-align: left; width: 95% !important; height: auto;font-size: 15px; color:" + inputTestColor +
+                "<div id='math' style=\"text-align: left; width: 95% !important; height: auto;font-size: "+getInputTextSize()+"px; color:" + inputTestColor +
                 ";\">\n" +
                 data +
                 "\n" +
