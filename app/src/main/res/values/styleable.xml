@@ -2,7 +2,9 @@
 <resources>
 
     <declare-styleable name="MathJaxView">
-        <attr name="android:gravity" />
+        <attr name="android:gravity"/>
+        <attr name="textSize" format="integer" />
+        <attr name="textColor" format="string" />
         <attr name="verticalScrollbarsEnabled" format="boolean" />
         <attr name="horizontalScrollbarsEnabled" format="boolean" />
         <attr name="input" format="enum">

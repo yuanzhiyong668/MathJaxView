@@ -26,6 +26,7 @@ import java.util.regex.Pattern;
 
 
 public class MathJaxView extends FrameLayout implements View.OnTouchListener {
+    private static final String TAG = "MathJaxView";
     private String inputText = null;
     private String inputTestColor = "#000000";
     private int inputTextSize = 15;
@@ -76,6 +77,11 @@ public class MathJaxView extends FrameLayout implements View.OnTouchListener {
         if (attrSet != null) {
             TypedArray attrs = context.obtainStyledAttributes(attrSet, R.styleable.MathJaxView);
             gravity = attrs.getInteger(R.styleable.MathJaxView_android_gravity, Gravity.CENTER);
+            inputTextSize = attrs.getInteger(R.styleable.MathJaxView_textSize, 15);
+            inputTestColor = attrs.getString(R.styleable.MathJaxView_textColor);
+            if (TextUtils.isEmpty(inputTestColor)) {
+                inputTestColor = "#000000";
+            }
             verticalScrollbarsEnabled = attrs.getBoolean(R.styleable.MathJaxView_verticalScrollbarsEnabled, false);
             horizontalScrollbarsEnabled = attrs.getBoolean(R.styleable.MathJaxView_horizontalScrollbarsEnabled, false);
             attrs.recycle();
@@ -297,7 +303,7 @@ public class MathJaxView extends FrameLayout implements View.OnTouchListener {
                 if ((Math.abs(mUpPosX - this.mDownPosX) < MOVE_THRESHOLD_DP) && (Math.abs(mUpPosY - this.mDownPosY) < MOVE_THRESHOLD_DP)) {
                     if (!mHandler.hasMessages(CLICK_ON_WEBVIEW)) {
                         mHandler.sendEmptyMessage(CLICK_ON_WEBVIEW);
-                        Log.e("测试", "mathwebonTouch");
+                        Log.e(TAG, "mathwebonTouch");
                     }
                 }
                 break;
